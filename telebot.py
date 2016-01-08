@@ -13,10 +13,10 @@ class HorTahatBot(telepot.Bot):
         print(content_type, chat_type, chat_id)
         pprint(msg)
         try:
-            if re.match(ur"[\u05e0]+[\u05d9]{2,}[\u05e1]", msg["text"]) or "nice" in msg["text"].lower():
+            if re.search(ur"[\u05e0]+[\u05d9]{2,}[\u05e1]", msg["text"]) or "nice" in msg["text"].lower():
                 # bot.sendMessage(chat_id, "Fuck you %s!" % msg["from"]["first_name"])
                 self.sendMessage(chat_id, u"\u05e0\u05d9\u05d9\u05e1\u05e1\u05e1\u05e1\u05e1\u05e1\u05e1\u05e1")
-            if re.match("^[Dd][Aa][Nn]$", msg["text"]) or u"\u05d3\u05df" in msg["text"]:
+            if re.search(r"\b[Dd][Aa][Nn]\b", msg["text"]) or ur"\u05d3\u05df" in msg["text"]:
                 self.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
         except KeyError, e:
             print(e)
