@@ -25,6 +25,7 @@ def handle(msg):
     try:
         if re.match(ur"[\u05e0]+[\u05d9]{2,}[\u05e1]", msg["text"]) or "nice" in msg["text"].lower():
             # bot.sendMessage(chat_id, "Fuck you %s!" % msg["from"]["first_name"])
+            # test
             bot.sendMessage(chat_id, u"\u05e0\u05d9\u05d9\u05e1\u05e1\u05e1\u05e1\u05e1\u05e1\u05e1\u05e1")
         if re.match("^[Dd][Aa][Nn]$", msg["text"]) or u"\u05d3\u05df" in msg["text"]:
             bot.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
