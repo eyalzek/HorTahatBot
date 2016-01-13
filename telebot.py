@@ -8,22 +8,34 @@ from pprint import pprint
 
 
 class HorTahatBot(telepot.Bot):
+    def __init__(self):
+        super(HorTahatBot, self).__init__()
+        self.counter = 0
+        self.nice_timer = None
+
     def handle(self, msg):
         content_type, chat_type, chat_id = telepot.glance2(msg)
         print(content_type, chat_type, chat_id)
         pprint(msg)
         try:
             if re.search(ur"[\u05e0]+[\u05d9]{2,}[\u05e1]", msg["text"]) or "nice" in msg["text"].lower():
-                self.sendMessage(chat_id, u"\u05e0\u05d9\u05d9\u05e1\u05e1\u05e1\u05e1\u05e1\u05e1\u05e1\u05e1")
+                self.handle_nice(chat_id)
             if re.search(r"\b[Dd][Aa][Nn]\b", msg["text"]) or ur"\u05d3\u05df" in msg["text"]:
                 self.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
             if "/doge" in msg["text"]:
                 self.sendMessage(chat_id, "Fuck you dog.")
         except KeyError, e:
             print(e)
-        if "testestest" in msg["text"]:
-            show_keyboard = {'keyboard': [['Yes','No'], ['Maybe','Maybe not']]}
-            self.sendMessage(chat_id, "custom keyboard", reply_markup=show_keyboard)
+
+    def handle_nice(self, chat_id):
+        if not self.nice_timer:
+            self.nice_timer = time.time()
+        elif time.time() - self.nice_timer > 3600:
+            self.counter = 0
+            self.nice_timer = None
+        self.counter += 1
+        if self.counter % 3 == 0:
+            self.sendMessage(chat_id, u"\u05e0" + (u"\u05d9" * self.counter / 3 * 2) + (u"\u05e1" * self.counter))
 
 
 def get_token(secret_path):
