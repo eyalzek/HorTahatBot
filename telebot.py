@@ -35,7 +35,7 @@ class HorTahatBot(telepot.Bot):
             self.nice_timer = None
         self.counter += 1
         if self.counter % 3 == 0:
-            self.sendMessage(chat_id, u"\u05e0" + (u"\u05d9" * self.counter / 3 * 2) + (u"\u05e1" * self.counter))
+            self.sendMessage(chat_id, u"\u05e0" + (u"\u05d9" * (self.counter / 3 * 2)) + (u"\u05e1" * self.counter))
 
 
 def get_token(secret_path):
