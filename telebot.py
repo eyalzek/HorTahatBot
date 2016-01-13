@@ -21,6 +21,9 @@ class HorTahatBot(telepot.Bot):
                 self.sendMessage(chat_id, "Fuck you dog.")
         except KeyError, e:
             print(e)
+        if "testestest" in msg["txt"]:
+            show_keyboard = {'keyboard': [['Yes','No'], ['Maybe','Maybe not']]}
+            self.sendMessage(chat_id, "custom keyboard", reply_markup=show_keyboard)
 
 
 def get_token(secret_path):
