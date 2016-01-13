@@ -8,8 +8,8 @@ from pprint import pprint
 
 
 class HorTahatBot(telepot.Bot):
-    def __init__(self):
-        super(HorTahatBot, self).__init__()
+    def __init__(self, token):
+        super(HorTahatBot, self).__init__(token)
         self.counter = 0
         self.nice_timer = None
 
