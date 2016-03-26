@@ -1,4 +1,5 @@
 # telepot API: https://github.com/nickoala/telepot
+import sys
 import time
 import re
 import random
@@ -25,8 +26,8 @@ class HorTahatBot(telepot.Bot):
                 self.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
             if "/doge" in msg["text"]:
                 self.sendMessage(chat_id, "Fuck you dog.")
-        except KeyError, e:
-            pass
+        except KeyError:
+            sys.exc_clear()
         # sticker behavior
         try:
             print(msg["sticker"]["file_id"])
@@ -35,8 +36,8 @@ class HorTahatBot(telepot.Bot):
              msg["sticker"]["file_id"] == "BQADBAADuwADb1U4AmB5iTJDbYKzAg"):
                 print("here")
                 self.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
-        except KeyError, e:
-            pass
+        except KeyError:
+            sys.exc_clear()
 
     def handle_nice(self, chat_id):
         if not self.nice_timer:
