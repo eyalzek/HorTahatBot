@@ -26,6 +26,13 @@ class HorTahatBot(telepot.Bot):
                 self.sendMessage(chat_id, "Fuck you dog.")
         except KeyError, e:
             print(e)
+        try:
+            if content_type == "sticker" and
+            (msg["sticker"]["file_id"] == "BQADBAADswADb1U4Ajlh22eInt9EAg" or
+             msg["sticker"]["file_id"] == "BQADBAADuwADb1U4AmB5iTJDbYKzAg"):
+                self.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
+        except KeyError, e:
+            print(e)
 
     def handle_nice(self, chat_id):
         if not self.nice_timer:
