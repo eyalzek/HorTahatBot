@@ -29,10 +29,12 @@ class HorTahatBot(telepot.Bot):
             print(e)
         # sticker behavior
         try:
-            if (content_type == "sticker") and \
-            (msg["sticker"]["file_id"] == "BQADBAADswADb1U4Ajlh22eInt9EAg" or \
-             msg["sticker"]["file_id"] == "BQADBAADuwADb1U4AmB5iTJDbYKzAg"):
-                self.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
+            if content_type == "sticker":
+                if (msg["sticker"]["file_id"] == "BQADBAADswADb1U4Ajlh22eInt9EAg" or \
+                msg["sticker"]["file_id"] == "BQADBAADuwADb1U4AmB5iTJDbYKzAg"):
+                    self.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
+                elif msg["sticker"]["file_id"] == "BQADBAADrwADb1U4ApiePR7EC2kAAQI":
+                    self.sendMessage(chat_id, u"\u2764\ufe0f")
         except KeyError, e:
             print(e)
 
