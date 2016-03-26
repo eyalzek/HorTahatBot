@@ -17,8 +17,8 @@ class HorTahatBot(telepot.Bot):
         content_type, chat_type, chat_id = telepot.glance2(msg)
         print(content_type, chat_type, chat_id)
         pprint(msg)
+        # text behavior
         try:
-            # text behavior:
             if re.search(ur"[\u05e0]+[\u05d9]{2,}[\u05e1]", msg["text"]) or "nice" in msg["text"].lower():
                 self.handle_nice(chat_id)
             if re.search(r"\b[Dd][Aa][Nn]\b", msg["text"]) or ur"\u05d3\u05df" in msg["text"]:
@@ -26,18 +26,17 @@ class HorTahatBot(telepot.Bot):
             if "/doge" in msg["text"]:
                 self.sendMessage(chat_id, "Fuck you dog.")
         except KeyError, e:
-            print(e)
-        else:
-            # sticker behavior:
-            try:
-                print(msg["sticker"]["file_id"])
-                if content_type == "sticker" and
-                (msg["sticker"]["file_id"] == "BQADBAADswADb1U4Ajlh22eInt9EAg" or
-                 msg["sticker"]["file_id"] == "BQADBAADuwADb1U4AmB5iTJDbYKzAg"):
-                    print("here")
-                    self.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
-            except KeyError, e:
-                print(e)
+            pass
+        # sticker behavior
+        try:
+            print(msg["sticker"]["file_id"])
+            if content_type == "sticker" and
+            (msg["sticker"]["file_id"] == "BQADBAADswADb1U4Ajlh22eInt9EAg" or
+             msg["sticker"]["file_id"] == "BQADBAADuwADb1U4AmB5iTJDbYKzAg"):
+                print("here")
+                self.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
+        except KeyError, e:
+            pass
 
     def handle_nice(self, chat_id):
         if not self.nice_timer:
