@@ -14,7 +14,7 @@ class HorTahatBot(telepot.Bot):
         self.nice_timer = None
 
     def handle(self, msg):
-        content_type, chat_type, chat_id = telepot.glance2(msg)
+        content_type, chat_type, chat_id = telepot.glance(msg)
         print(content_type, chat_type, chat_id)
         pprint(msg)
         # text behavior
@@ -61,8 +61,9 @@ def get_gif():
 
 
 def main():
+    print("Bot starting")
     bot = HorTahatBot(get_token(".telegram_bot_secret"))
-    bot.notifyOnMessage()
+    bot.message_loop()
     while True:
         time.sleep(10)
 
