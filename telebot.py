@@ -26,16 +26,17 @@ class HorTahatBot(telepot.Bot):
             if "/doge" in msg["text"]:
                 self.sendMessage(chat_id, "Fuck you dog.")
         except KeyError, e:
-            print(e)
+            print("Recieved KeyError: %s" % e)
         # sticker behavior
         try:
             if content_type == "sticker":
-                if (msg["sticker"]["file_id"] == "BQADBAADswADb1U4Ajlh22eInt9EAg" or \
-                msg["sticker"]["file_id"] == "BQADBAADuwADb1U4AmB5iTJDbYKzAg"):
+                if (msg["sticker"]["file_id"] == "BQADBAADxwADb1U4AqYO5MVCMicTAg" or \
+                msg["sticker"]["file_id"] == "BQADBAADwwADb1U4Av1CdOq0IV7IAg"):
                     self.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
-                elif msg["sticker"]["file_id"] == "BQADBAADrwADb1U4ApiePR7EC2kAAQI":
+                elif msg["sticker"]["file_id"] == "BQADBAADwQADb1U4Ajw3PGPrHvhFAg":
                     self.sendMessage(chat_id, u"\u2764\ufe0f")
         except KeyError, e:
+            print("Recieved KeyError: %s" % e)
             print(e)
 
     def handle_nice(self, chat_id):
