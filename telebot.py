@@ -30,10 +30,13 @@ class HorTahatBot(telepot.Bot):
         # sticker behavior
         try:
             if content_type == "sticker":
-                if (msg["sticker"]["file_id"] == "BQADBAADxwADb1U4AqYO5MVCMicTAg" or \
-                msg["sticker"]["file_id"] == "BQADBAADwwADb1U4Av1CdOq0IV7IAg"):
+                if ((msg["sticker"]["emoji"] == u"\U0001f621" and \
+                                msg["sticker"]["file_size"] == 18054) or \
+                    (msg["sticker"]["emoji"] == u"\U0001f632" and \
+                                msg["sticker"]["file_size"] == 20990)):
                     self.sendMessage(chat_id, u"\u05d3\u05df \u05d2\u05d9\u05d9")
-                elif msg["sticker"]["file_id"] == "BQADBAADwQADb1U4Ajw3PGPrHvhFAg":
+                elif (msg["sticker"]["emoji"] == u"\U0001f604" and \
+                    msg["sticker"]["file_size"] == 37090):
                     self.sendMessage(chat_id, u"\u2764\ufe0f")
         except KeyError, e:
             print("Recieved KeyError: %s" % e)
